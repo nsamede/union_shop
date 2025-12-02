@@ -30,7 +30,7 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        color: Colors.grey.withAlpha(30),
+        color: Colors.grey.withAlpha(15),
         margin: const EdgeInsets.only(top: 35),
         padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 40),
         child: Column(
@@ -64,8 +64,8 @@ class Footer extends StatelessWidget {
               ],
             ),
             // Help and Information
-            Padding(
-              padding: const EdgeInsets.only(top: 40),
+            Container(
+              margin: const EdgeInsets.only(top: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -85,6 +85,47 @@ class Footer extends StatelessWidget {
                 ],
               ),
             ),
+            // Latest Offers form
+            Container(
+              margin: const EdgeInsets.only(top: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Latest Offers", style: footerHeading),
+                  Form(
+                    child: Column(
+                      children: [
+                        TextFormField(
+                            decoration: const InputDecoration(
+                          label: Text("Email address"),
+                          border: OutlineInputBorder(),
+                        )),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          width: double.infinity,
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                                backgroundColor: Colors.purple.shade900,
+                                foregroundColor: Colors.white,
+                                shape: const RoundedRectangleBorder()),
+                            child: const Padding(
+                              padding: EdgeInsets.all(12),
+                              child: Text(
+                                "SUBSCRIBE",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2),
+                              ),
+                            ),
+                            onPressed: () {},
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ));
   }
