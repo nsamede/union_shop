@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/about_page.dart';
 import 'package:union_shop/product_page.dart';
 
 void main() {
@@ -21,7 +22,10 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
-      routes: {'/product': (context) => const ProductPage()},
+      routes: {
+        '/product': (context) => const ProductPage(),
+        '/about': (context) => const AboutPage()
+      },
     );
   }
 }
@@ -37,6 +41,10 @@ class HomeScreen extends StatelessWidget {
     Navigator.pushNamed(context, '/product');
   }
 
+  void navigateToAbout(BuildContext context) {
+    Navigator.pushNamed(context, '/about');
+  }
+
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
   }
@@ -44,6 +52,23 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        width: 200,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const ListTile(title: Text("Home")),
+            const ListTile(title: Text("Shop")),
+            const ListTile(title: Text("The Print Shack")),
+            const ListTile(title: Text("SALE!")),
+            GestureDetector(
+              child: const ListTile(title: Text("About")),
+              onTap: () => navigateToAbout(context),
+            ),
+            const ListTile(title: Text("UPSU.net")),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -136,19 +161,16 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   onPressed: placeholderCallbackForButtons,
                                 ),
-                                IconButton(
-                                  icon: const Icon(
-                                    Icons.menu,
-                                    size: 18,
-                                    color: Colors.grey,
-                                  ),
-                                  padding: const EdgeInsets.all(8),
-                                  constraints: const BoxConstraints(
-                                    minWidth: 32,
-                                    minHeight: 32,
-                                  ),
-                                  onPressed: placeholderCallbackForButtons,
-                                ),
+                                Builder(
+                                    builder: (context) => IconButton(
+                                          icon: const Icon(Icons.menu,
+                                              size: 18, color: Colors.grey),
+                                          padding: const EdgeInsets.all(8),
+                                          constraints: const BoxConstraints(
+                                              minWidth: 32, minHeight: 32),
+                                          onPressed: () =>
+                                              Scaffold.of(context).openDrawer(),
+                                        )),
                               ],
                             ),
                           ),
