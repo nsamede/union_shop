@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Footer extends StatelessWidget {
   static const TextStyle footerHeading = TextStyle(
@@ -87,7 +88,7 @@ class Footer extends StatelessWidget {
             ),
             // Latest Offers form
             Container(
-              margin: const EdgeInsets.only(top: 40),
+              margin: const EdgeInsets.only(top: 40, bottom: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -125,7 +126,91 @@ class Footer extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
+            const Divider(),
+            const SizedBox(
+              height: 20,
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      child: SvgPicture.asset(
+                        "images/facebookLogo.svg",
+                        height: 25,
+                      ),
+                      onTap: () {},
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    GestureDetector(
+                        child: SvgPicture.asset(
+                          "images/twitterLogo.svg",
+                          height: 25,
+                        ),
+                        onTap: () {}),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(
+                      "images/applePayLogo.svg",
+                      height: 25,
+                    ),
+                    SvgPicture.asset(
+                      "images/dinersClubLogo.svg",
+                      height: 25,
+                    ),
+                    SvgPicture.asset(
+                      "images/discoverLogo.svg",
+                      height: 25,
+                    ),
+                    SvgPicture.asset(
+                      "images/googlePayLogo.svg",
+                      height: 25,
+                    ),
+                    SvgPicture.asset(
+                      "images/maestroLogo.svg",
+                      height: 25,
+                    ),
+                    SvgPicture.asset(
+                      "images/mastercardLogo.svg",
+                      height: 25,
+                    ),
+                    SvgPicture.asset(
+                      "images/shopPayLogo.svg",
+                      height: 25,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      "images/unionPayLogo.svg",
+                      height: 25,
+                    ),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    SvgPicture.asset(
+                      "images/visaLogo.svg",
+                      height: 25,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ],
         ));
   }
