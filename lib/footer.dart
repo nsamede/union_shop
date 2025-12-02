@@ -131,6 +131,7 @@ class Footer extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            // Icons
             Column(
               children: [
                 Row(
@@ -211,6 +212,9 @@ class Footer extends StatelessWidget {
                 ),
               ],
             ),
+            Container(
+                margin: const EdgeInsets.only(top: 40),
+                child: const Text("© 2025, upsu-store Powered by Shopify"))
           ],
         ));
   }
