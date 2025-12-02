@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/app_styles.dart';
+import 'package:union_shop/footer.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -20,6 +21,7 @@ class AboutPage extends StatelessWidget {
               ),
             ),
           ),
+          // Main text
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -61,6 +63,7 @@ class AboutPage extends StatelessWidget {
               ],
             ),
           ),
+          const Footer(),
         ],
       )),
     );
