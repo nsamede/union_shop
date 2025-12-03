@@ -106,7 +106,7 @@ class Footer extends StatelessWidget {
                           width: double.infinity,
                           child: TextButton(
                             style: TextButton.styleFrom(
-                                backgroundColor: Colors.purple.shade900,
+                                backgroundColor: const Color(0xff4d2963),
                                 foregroundColor: Colors.white,
                                 shape: const RoundedRectangleBorder()),
                             child: const Padding(
