@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:union_shop/app_styles.dart';
 import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
+import 'package:union_shop/top_banner.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -13,6 +14,7 @@ class AboutPage extends StatelessWidget {
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const TopBanner(),
           const Header(),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 30),
