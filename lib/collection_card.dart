@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/app_styles.dart';
+import 'package:union_shop/navigation_functions.dart';
 
 class CollectionCard extends StatelessWidget {
   final String title;
@@ -10,27 +10,32 @@ class CollectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(imageUrl), fit: BoxFit.cover)),
-              child: Container(
+    return GestureDetector(
+      onTap: () => navigateToCollection(context),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.6),
-                ),
-              )),
-        ),
-        Center(
-          child: Text(
-            title,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                    image: DecorationImage(
+                        image: AssetImage(imageUrl), fit: BoxFit.cover)),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.6),
+                  ),
+                )),
           ),
-        )
-      ],
+          Center(
+            child: Text(
+              title,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

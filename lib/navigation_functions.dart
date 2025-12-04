@@ -11,3 +11,7 @@ void navigateToAbout(BuildContext context) {
 void navigateToHome(BuildContext context) {
   Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
 }
+
+void navigateToCollection(BuildContext context) {
+  Navigator.pushNamed(context, "/collection");
+}

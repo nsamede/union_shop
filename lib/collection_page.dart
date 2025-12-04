@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CollectionPage extends StatelessWidget {
-  final String title;
-
-  const CollectionPage({super.key, required this.title});
+  const CollectionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text(title);
+    return const Text("collection");
   }
 }
