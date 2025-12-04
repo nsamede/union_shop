@@ -4,6 +4,7 @@ import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/app_styles.dart';
+import 'package:union_shop/top_banner.dart';
 
 void main() {
   runApp(const UnionShopApp());
@@ -71,6 +72,7 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const TopBanner(),
             // Header
             const Header(),
 
