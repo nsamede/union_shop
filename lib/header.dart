@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/navigation_functions.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
-
-  void navigateToHome(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-  }
 
   @override
   Widget build(BuildContext context) {

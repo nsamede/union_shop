@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:union_shop/about_page.dart';
 import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
+import 'package:union_shop/navigation_functions.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/app_styles.dart';
 import 'package:union_shop/top_banner.dart';
@@ -36,14 +37,6 @@ class UnionShopApp extends StatelessWidget {
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  void navigateToProduct(BuildContext context) {
-    Navigator.pushNamed(context, '/product');
-  }
-
-  void navigateToAbout(BuildContext context) {
-    Navigator.pushNamed(context, '/about');
-  }
 
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
