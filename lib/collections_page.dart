@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/app_styles.dart';
+import 'package:union_shop/collection_card.dart';
 import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
-import 'package:union_shop/product_card.dart';
 import 'package:union_shop/top_banner.dart';
 
 class CollectionsPage extends StatelessWidget {
@@ -33,10 +33,9 @@ class CollectionsPage extends StatelessWidget {
               scrollDirection: Axis.vertical,
               children: [
                 for (var i = 0; i < 10; i++)
-                  const ProductCard(
-                    title: 'Placeholder Product',
-                    price: '£25.00',
-                    imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                  const CollectionCard(
+                    title: 'Placeholder',
+                    imageUrl: 'images/greenSweatshirtFinal_900x.png',
                   )
               ],
             ),
