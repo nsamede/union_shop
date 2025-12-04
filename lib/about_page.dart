@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/app_drawer.dart';
 import 'package:union_shop/app_styles.dart';
 import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
@@ -10,6 +11,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const AppDrawer(),
       body: SingleChildScrollView(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
