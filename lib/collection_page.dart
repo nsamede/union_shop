@@ -99,7 +99,7 @@ class _CollectionPageState extends State<CollectionPage> {
             const TopBanner(),
             const Header(),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
               child: Column(
                 children: [
                   Center(
@@ -121,27 +121,44 @@ class _CollectionPageState extends State<CollectionPage> {
                   ),
                   Row(
                     children: [
-                      DropdownMenu<ProductType?>(
-                          label: const Text("Filter by"),
-                          onSelected: _onFilterChanged,
-                          dropdownMenuEntries: [
-                            for (ProductType productType in ProductType.values)
-                              DropdownMenuEntry(
-                                  value: productType,
-                                  label: productType.displayName),
-                            const DropdownMenuEntry(
-                                value: null, label: "All products")
-                          ]),
-                      DropdownMenu(
-                          label: const Text("Sort by"),
-                          onSelected: _onSortChanged,
-                          dropdownMenuEntries: [
-                            for (SortingOption sortingOption
-                                in SortingOption.values)
-                              DropdownMenuEntry(
-                                  value: sortingOption,
-                                  label: sortingOption.displayName)
-                          ]),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          child: DropdownMenu<ProductType?>(
+                              label: const Text("Filter by"),
+                              onSelected: _onFilterChanged,
+                              initialSelection: _selectedProductType,
+                              requestFocusOnTap: false,
+                              inputDecorationTheme:
+                                  const InputDecorationTheme(),
+                              dropdownMenuEntries: [
+                                for (ProductType productType
+                                    in ProductType.values)
+                                  DropdownMenuEntry(
+                                      value: productType,
+                                      label: productType.displayName),
+                                const DropdownMenuEntry(
+                                    value: null, label: "All products")
+                              ]),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: DropdownMenu<SortingOption>(
+                            label: const Text("Sort by"),
+                            onSelected: _onSortChanged,
+                            initialSelection: _selectedSortingOption,
+                            requestFocusOnTap: false,
+                            inputDecorationTheme: const InputDecorationTheme(),
+                            dropdownMenuEntries: [
+                              for (SortingOption sortingOption
+                                  in SortingOption.values)
+                                DropdownMenuEntry(
+                                    value: sortingOption,
+                                    label: sortingOption.displayName)
+                            ]),
+                      ),
                     ],
                   ),
                   const Divider(),
