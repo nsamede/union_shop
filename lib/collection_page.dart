@@ -6,6 +6,16 @@ import 'package:union_shop/models/product.dart';
 import 'package:union_shop/product_card.dart';
 import 'package:union_shop/top_banner.dart';
 
+enum SortingOption {
+  priceAscending("Price, low to high"),
+  priceDescending("Price, high to low"),
+  alphaAcscending("Alphabetically, A-Z"),
+  alphaDescending("Alphabetically, Z-A");
+
+  const SortingOption(this.displayName);
+  final String displayName;
+}
+
 class CollectionPage extends StatefulWidget {
   const CollectionPage({super.key});
 
@@ -57,15 +67,25 @@ class _CollectionPageState extends State<CollectionPage> {
           children: [
             const TopBanner(),
             const Header(),
-            DropdownMenu<ProductType?>(
-                label: const Text("Filter by"),
-                onSelected: _onFilterChanged,
-                dropdownMenuEntries: [
-                  for (ProductType productType in ProductType.values)
+            Row(
+              children: [
+                DropdownMenu<ProductType?>(
+                    label: const Text("Filter by"),
+                    onSelected: _onFilterChanged,
+                    dropdownMenuEntries: [
+                      for (ProductType productType in ProductType.values)
+                        DropdownMenuEntry(
+                            value: productType, label: productType.displayName),
+                      const DropdownMenuEntry(
+                          value: null, label: "All products")
+                    ]),
+                DropdownMenu(dropdownMenuEntries: [
+                  for (SortingOption sortingOption in SortingOption.values)
                     DropdownMenuEntry(
-                        value: productType, label: productType.displayName),
-                  const DropdownMenuEntry(value: null, label: "All products")
+                        value: sortingOption, label: sortingOption.displayName)
                 ]),
+              ],
+            ),
             Center(
               child: Column(
                 children: [
