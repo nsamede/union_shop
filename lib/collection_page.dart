@@ -100,7 +100,7 @@ class _CollectionPageState extends State<CollectionPage> {
             const TopBanner(),
             const Header(),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: [
                   Center(
@@ -114,6 +114,10 @@ class _CollectionPageState extends State<CollectionPage> {
                             textAlign: TextAlign.center,
                           ),
                         ),
+                        const Text(
+                            "This is a description for the example collection.",
+                            style: bodyText,
+                            textAlign: TextAlign.center),
                       ],
                     ),
                   ),
