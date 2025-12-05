@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/app_styles.dart';
+import 'package:union_shop/views/app_styles.dart';
 import 'package:union_shop/models/product.dart';
-import 'package:union_shop/product_card.dart';
+import 'package:union_shop/views/widgets/product_card.dart';
 
 class CollectionPreview extends StatelessWidget {
   final String? title;
