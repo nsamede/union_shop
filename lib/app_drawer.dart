@@ -13,15 +13,58 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const ListTile(title: Text("Home")),
-          const ListTile(title: Text("Shop")),
-          const ListTile(title: Text("The Print Shack")),
-          const ListTile(title: Text("SALE!")),
+          const ListTile(
+              title: Text(
+            "Home",
+          )),
+          const ExpansionTile(
+            title: Text(
+              "Shop",
+            ),
+            children: [
+              Text(
+                "Clothing",
+              ),
+              Text(
+                "Merchandise",
+              ),
+              Text(
+                "Halloween 🎃",
+              ),
+              Text(
+                "Signature & Essential Range",
+              ),
+              Text(
+                "Portsmouth City Collection",
+              ),
+              Text(
+                "Pride Collection 🏳️‍🌈",
+              ),
+              Text(
+                "Graduation 🎓",
+              )
+            ],
+          ),
+          const ListTile(
+              title: Text(
+            "The Print Shack",
+          )),
+          const ListTile(
+              title: Text(
+            "SALE!",
+          )),
           GestureDetector(
-            child: const ListTile(title: Text("About")),
+            child: const ListTile(
+              title: Text(
+                "About",
+              ),
+            ),
             onTap: () => navigateToAbout(context),
           ),
-          const ListTile(title: Text("UPSU.net")),
+          const ListTile(
+              title: Text(
+            "UPSU.net",
+          )),
         ],
       ),
     );
