@@ -9,6 +9,7 @@ import 'package:union_shop/models/product.dart';
 import 'package:union_shop/product_card.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/app_styles.dart';
+import 'package:union_shop/sign_in_page.dart';
 import 'package:union_shop/top_banner.dart';
 
 void main() {
@@ -54,6 +55,7 @@ class UnionShopApp extends StatelessWidget {
                 );
               }),
             ),
+        '/signin': (context) => const SignInPage(),
       },
     );
   }
