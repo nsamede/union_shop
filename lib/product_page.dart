@@ -52,10 +52,77 @@ class ProductPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           product.title,
                           style: heading1,
+                        ),
+                        Text(
+                          "£${product.price.toStringAsFixed(2)}",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.grey[700],
+                              letterSpacing: 1,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic),
+                        ),
+                        Text("Tax included.",
+                            style: TextStyle(
+                                fontSize: 13, color: Colors.grey[700])),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 40),
+                    child: Column(
+                      children: [
+                        DropdownMenu<String>(
+                          label: Text("Colour"),
+                          initialSelection: "Black",
+                          expandedInsets: EdgeInsets.zero,
+                          requestFocusOnTap: false,
+                          dropdownMenuEntries: [
+                            DropdownMenuEntry(value: "Black", label: "Black"),
+                            DropdownMenuEntry(value: "Purple", label: "Purple"),
+                            DropdownMenuEntry(value: "Grey", label: "Grey"),
+                            DropdownMenuEntry(
+                                value: "Bottle Green", label: "Bottle Green"),
+                          ],
+                        ),
+                        SizedBox(height: 20),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: DropdownMenu<String>(
+                                label: Text("Size"),
+                                initialSelection: "S",
+                                expandedInsets: EdgeInsets.zero,
+                                requestFocusOnTap: false,
+                                dropdownMenuEntries: [
+                                  DropdownMenuEntry(value: "S", label: "S"),
+                                  DropdownMenuEntry(value: "M", label: "M"),
+                                  DropdownMenuEntry(value: "L", label: "L"),
+                                  DropdownMenuEntry(value: "XL", label: "XL"),
+                                  DropdownMenuEntry(value: "XXL", label: "XXL"),
+                                ],
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            SizedBox(
+                              width: 100,
+                              child: TextField(
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      label: Text("Quantity"),
+                                      hint: Text("1",
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 14)),
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always)),
+                            )
+                          ],
                         ),
                       ],
                     ),
