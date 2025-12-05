@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:union_shop/app_drawer.dart';
 import 'package:union_shop/app_styles.dart';
+import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
 import 'package:union_shop/models/product.dart';
 import 'package:union_shop/top_banner.dart';
@@ -196,6 +197,7 @@ class ProductPage extends StatelessWidget {
                 ],
               ),
             ),
+            const Footer()
           ],
         ),
       ),
