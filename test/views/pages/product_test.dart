@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:union_shop/views/pages/product_page.dart';
+import 'package:union_shop/views/widgets/footer.dart';
+import 'package:union_shop/views/widgets/header.dart';
 
 void main() {
   group('Product Page Tests', () {
@@ -28,39 +30,18 @@ void main() {
           findsOneWidget);
     });
 
-    testWidgets('should display student instruction text', (tester) async {
+    testWidgets('should display header', (tester) async {
       await tester.pumpWidget(createTestWidget());
       await tester.pump();
 
-      // Check that student instruction is present
-      expect(
-        find.text(
-          'Students should add size options, colour options, quantity selector, add to cart button, and buy now button here.',
-        ),
-        findsOneWidget,
-      );
-    });
-
-    testWidgets('should display header icons', (tester) async {
-      await tester.pumpWidget(createTestWidget());
-      await tester.pump();
-
-      // Check that header icons are present
-      expect(find.byIcon(Icons.search), findsOneWidget);
-      expect(find.byIcon(Icons.shopping_bag_outlined), findsOneWidget);
-      expect(find.byIcon(Icons.menu), findsOneWidget);
+      expect(find.byType(Header), findsOneWidget);
     });
 
     testWidgets('should display footer', (tester) async {
       await tester.pumpWidget(createTestWidget());
       await tester.pump();
 
-      // Check that footer is present
-      expect(find.text('Placeholder Footer'), findsOneWidget);
-      expect(
-        find.text('Students should customise this footer section'),
-        findsOneWidget,
-      );
+      expect(find.byType(Footer), findsOneWidget);
     });
   });
 }
