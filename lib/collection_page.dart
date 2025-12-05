@@ -40,6 +40,23 @@ class _CollectionPageState extends State<CollectionPage> {
   ProductType? _selectedProductType;
   SortingOption? _selectedSortingOption = SortingOption.priceAscending;
 
+  final int productsPerPage = 5;
+  int _currentPage = 0;
+
+  int get totalPages => (_displayedProducts.length / productsPerPage).ceil();
+
+  List<Product> get currentPageProducts {
+    final int startProductNumber = _currentPage * productsPerPage;
+    final int endProductNumber = startProductNumber + productsPerPage;
+
+    if (startProductNumber >= _displayedProducts.length) {
+      return [];
+    } else {
+      return _displayedProducts.sublist(startProductNumber,
+          endProductNumber.clamp(0, _displayedProducts.length));
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -197,6 +214,7 @@ class _CollectionPageState extends State<CollectionPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 30),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
                             onPressed: () {},
