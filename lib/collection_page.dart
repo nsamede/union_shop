@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/app_drawer.dart';
 import 'package:union_shop/app_styles.dart';
+import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
 import 'package:union_shop/models/product.dart';
 import 'package:union_shop/product_card.dart';
@@ -192,6 +193,7 @@ class _CollectionPageState extends State<CollectionPage> {
                 ],
               ),
             ),
+            const Footer(),
           ],
         ),
       ),
