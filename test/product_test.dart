@@ -5,7 +5,7 @@ import 'package:union_shop/product_page.dart';
 void main() {
   group('Product Page Tests', () {
     Widget createTestWidget() {
-      return const MaterialApp(home: ProductPage());
+      return MaterialApp(home: ProductPage());
     }
 
     testWidgets('should display product page with basic elements', (
