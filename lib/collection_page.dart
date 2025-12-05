@@ -193,6 +193,22 @@ class _CollectionPageState extends State<CollectionPage> {
                           product: product,
                         )
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    child: Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon:
+                                const Icon(Icons.keyboard_arrow_left_outlined)),
+                        const Text("Page 1 of 1"),
+                        IconButton(
+                            onPressed: () {},
+                            icon:
+                                const Icon(Icons.keyboard_arrow_right_outlined))
+                      ],
+                    ),
                   )
                 ],
               ),
