@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                            'images/portsmouthCityPostcard2.jpg',
+                            'assets/images/portsmouthCityPostcard2.jpg',
                           ),
                           fit: BoxFit.cover,
                         ),

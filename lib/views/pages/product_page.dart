@@ -198,16 +198,22 @@ class ProductPage extends StatelessWidget {
                                   foregroundColor: const Color(0xff4d2963)),
                               onPressed: () => navigateToCollection(context),
                               child: const Row(
+                                mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   Icon(Icons.arrow_back),
-                                  Text(
-                                    "BACK TO COLLECTION",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        letterSpacing: 2,
-                                        fontSize: 14),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Flexible(
+                                    child: Text(
+                                      "BACK TO COLLECTION",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 2,
+                                          fontSize: 14),
+                                    ),
                                   ),
                                 ],
                               )),

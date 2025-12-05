@@ -16,12 +16,16 @@ void main() {
 
       // Check that basic UI elements are present
       expect(
-        find.text('PLACEHOLDER HEADER TEXT - STUDENTS TO UPDATE!'),
+        find.text('Classic Sweatshirts'),
         findsOneWidget,
       );
-      expect(find.text('Placeholder Product Name'), findsOneWidget);
-      expect(find.text('£15.00'), findsOneWidget);
-      expect(find.text('Description'), findsOneWidget);
+      expect(find.text('£23.00'), findsOneWidget);
+      expect(
+          find.text(
+              'Bringing to you, our best selling Classic Sweatshirt. Available in 4 different colours.'),
+          findsOneWidget);
+      expect(find.text('Soft, comfortable, 50% cotton and 50% polyester.'),
+          findsOneWidget);
     });
 
     testWidgets('should display student instruction text', (tester) async {
