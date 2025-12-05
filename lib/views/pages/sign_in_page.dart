@@ -15,7 +15,7 @@ class SignInPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Image.asset(
-                "images/upsuLogo.png",
+                "assets/images/upsuLogo.png",
                 scale: 1.5,
               ),
             ),
