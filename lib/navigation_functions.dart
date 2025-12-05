@@ -16,6 +16,10 @@ void navigateToCollection(BuildContext context) {
   Navigator.pushNamed(context, "/collection");
 }
 
+void navigateToCollections(BuildContext context) {
+  Navigator.pushNamed(context, "/collections");
+}
+
 void navigateToSale(BuildContext context) {
   Navigator.pushNamed(context, "/sale");
 }

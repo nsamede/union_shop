@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/about_page.dart';
 import 'package:union_shop/app_drawer.dart';
+import 'package:union_shop/collection_card.dart';
 import 'package:union_shop/collection_page.dart';
 import 'package:union_shop/collections_page.dart';
 import 'package:union_shop/footer.dart';
@@ -151,60 +152,148 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // Products Section
-            Container(
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Column(
-                  children: [
-                    const Text('PRODUCTS SECTION', style: heading2),
-                    const SizedBox(height: 48),
-                    GridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount:
-                          MediaQuery.of(context).size.width > 600 ? 2 : 1,
-                      crossAxisSpacing: 24,
-                      mainAxisSpacing: 48,
-                      children: [
-                        ProductCard(
-                          product: Product(
-                              title: 'Placeholder Product 1',
-                              price: 10.0,
-                              imageUrl: 'images/portsmouthCityMagnet1.jpg',
-                              productTypes: []),
-                        ),
-                        ProductCard(
-                          product: Product(
-                              title: 'Placeholder Product 2',
-                              price: 15.00,
-                              imageUrl: 'images/portsmouthCityMagnet1.jpg',
-                              productTypes: []),
-                        ),
-                        ProductCard(
-                          product: Product(
-                              title: 'Placeholder Product 3',
-                              price: 20.00,
-                              imageUrl: 'images/portsmouthCityMagnet1.jpg',
-                              productTypes: []),
-                        ),
-                        ProductCard(
-                          product: Product(
-                            title: 'Placeholder Product 4',
-                            price: 25.00,
-                            imageUrl: 'images/portsmouthCityMagnet1.jpg',
-                            productTypes: [],
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+            CollectionPreview(
+              title: "ESSENTIAL RANGE - OVER 20% OFF!",
+              products: [
+                Product(
+                    imageUrl: "images/greenSweatshirtFinal_900x.png",
+                    title: "Product 1",
+                    price: 20.00,
+                    productTypes: [],
+                    salePrice: 14.99),
+                Product(
+                    imageUrl: "images/greenSweatshirtFinal_900x.png",
+                    title: "Product 2",
+                    price: 10.00,
+                    productTypes: [],
+                    salePrice: 6.99),
+              ],
+            ),
+            CollectionPreview(title: "SIGNATURE RANGE", products: [
+              Product(
+                  imageUrl: "images/greenSweatshirtFinal_900x.png",
+                  title: "Product 3",
+                  price: 15.00,
+                  productTypes: []),
+              Product(
+                  imageUrl: "images/greenSweatshirtFinal_900x.png",
+                  title: "Product 4",
+                  price: 12.00,
+                  productTypes: []),
+            ]),
+            CollectionPreview(
+              title: "PORTSMOUTH CITY COLLECTION",
+              products: [
+                Product(
+                    imageUrl: "images/portsmouthCityMagnet1.jpg",
+                    title: "Product 5",
+                    price: 1.00,
+                    productTypes: []),
+                Product(
+                    imageUrl: "images/portsmouthCityMagnet1.jpg",
+                    title: "Product 6",
+                    price: 3.00,
+                    productTypes: []),
+                Product(
+                    imageUrl: "images/portsmouthCityMagnet1.jpg",
+                    title: "Product 7",
+                    price: 7.00,
+                    productTypes: []),
+              ],
+            ),
+            SizedBox(
+              height: 40,
+              width: 100,
+              child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: const Color(0xff4d2963),
+                    foregroundColor: Colors.white,
+                    shape: const ContinuousRectangleBorder(),
+                  ),
+                  onPressed: () => navigateToCollections(context),
+                  child: const Text(
+                    "VIEW ALL",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        letterSpacing: 1,
+                        fontWeight: FontWeight.bold),
+                  )),
+            ),
+
+            const SizedBox(height: 40),
+            const Text(
+              "Our Range",
+              style: heading2,
+              textAlign: TextAlign.center,
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
+                mainAxisSpacing: 15,
+                crossAxisSpacing: 15,
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                children: [
+                  for (int i = 0; i < 4; i++)
+                    GestureDetector(
+                      onTap: () => navigateToCollection(context),
+                      child: CollectionCard(
+                          imageUrl: "images/greenSweatshirtFinal_900x.png",
+                          title: "Collection $i"),
+                    )
+                ],
               ),
             ),
 
             // Footer
             const Footer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CollectionPreview extends StatelessWidget {
+  final String? title;
+  final List<Product>? products;
+
+  const CollectionPreview({
+    super.key,
+    required this.title,
+    required this.products,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(40.0),
+        child: Column(
+          children: [
+            Text(
+              title!,
+              style: heading2,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 48),
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
+              crossAxisSpacing: 24,
+              mainAxisSpacing: 48,
+              children: [
+                for (Product product in products!)
+                  ProductCard(
+                    product: product,
+                  ),
+              ],
+            ),
           ],
         ),
       ),
