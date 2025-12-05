@@ -40,12 +40,18 @@ class _CollectionPageState extends State<CollectionPage> {
   ProductType? _selectedProductType;
   SortingOption? _selectedSortingOption = SortingOption.priceAscending;
 
-  final int productsPerPage = 5;
+  final int productsPerPage = 4;
   int _currentPage = 0;
 
-  int get totalPages => (_displayedProducts.length / productsPerPage).ceil();
+  int get totalPages {
+    if (_displayedProducts.isEmpty) {
+      return 1;
+    } else {
+      return (_displayedProducts.length / productsPerPage).ceil();
+    }
+  }
 
-  List<Product> get currentPageProducts {
+  List<Product> get _currentPageProducts {
     final int startProductNumber = _currentPage * productsPerPage;
     final int endProductNumber = startProductNumber + productsPerPage;
 
@@ -105,6 +111,26 @@ class _CollectionPageState extends State<CollectionPage> {
           return 0;
       }
     });
+  }
+
+  void Function()? _getPageIncreasedCallback() {
+    if (_currentPage < totalPages - 1) {
+      return () => setState(
+            () => _currentPage++,
+          );
+    } else {
+      return null;
+    }
+  }
+
+  void Function()? _getPageDecreasedCallback() {
+    if (_currentPage > 0) {
+      return () => setState(
+            () => _currentPage--,
+          );
+    } else {
+      return null;
+    }
   }
 
   @override
@@ -205,7 +231,7 @@ class _CollectionPageState extends State<CollectionPage> {
                     mainAxisSpacing: 48,
                     shrinkWrap: true,
                     children: [
-                      for (var product in _displayedProducts)
+                      for (var product in _currentPageProducts)
                         ProductCard(
                           product: product,
                         )
@@ -217,12 +243,12 @@ class _CollectionPageState extends State<CollectionPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
-                            onPressed: () {},
+                            onPressed: _getPageDecreasedCallback(),
                             icon:
                                 const Icon(Icons.keyboard_arrow_left_outlined)),
-                        const Text("Page 1 of 1"),
+                        Text("Page ${_currentPage + 1} of $totalPages"),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: _getPageIncreasedCallback(),
                             icon:
                                 const Icon(Icons.keyboard_arrow_right_outlined))
                       ],
