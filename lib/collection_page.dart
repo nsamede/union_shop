@@ -26,7 +26,7 @@ class _CollectionPageState extends State<CollectionPage> {
         productTypes: types);
   });
   List<Product> _displayedProducts = [];
-  ProductType? _selectedProductType = null;
+  ProductType? _selectedProductType;
 
   @override
   void initState() {
@@ -48,6 +48,7 @@ class _CollectionPageState extends State<CollectionPage> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const AppDrawer(),
@@ -62,7 +63,7 @@ class _CollectionPageState extends State<CollectionPage> {
                 dropdownMenuEntries: [
                   for (ProductType productType in ProductType.values)
                     DropdownMenuEntry(
-                        value: productType, label: productType.toString()),
+                        value: productType, label: productType.displayName),
                   const DropdownMenuEntry(value: null, label: "All products")
                 ]),
             Center(

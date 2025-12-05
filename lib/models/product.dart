@@ -1,7 +1,10 @@
 enum ProductType {
-  clothing,
-  merchandise,
-  popular,
+  clothing("Clothing"),
+  merchandise("Merchandise"),
+  popular("Popular");
+
+  const ProductType(this.displayName);
+  final String displayName;
 }
 
 class Product {
