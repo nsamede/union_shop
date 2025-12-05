@@ -37,6 +37,7 @@ class _CollectionPageState extends State<CollectionPage> {
   });
   List<Product> _displayedProducts = [];
   ProductType? _selectedProductType;
+  SortingOption? _selectedSortingOption = SortingOption.priceAscending;
 
   @override
   void initState() {
@@ -55,6 +56,26 @@ class _CollectionPageState extends State<CollectionPage> {
                 product.productTypes.contains(_selectedProductType))
             .toList();
       }
+    });
+  }
+
+  void _onSortChanged(SortingOption? selectedSort) {
+    setState(() {
+      _selectedSortingOption = selectedSort;
+      _displayedProducts.sort((product1, product2) {
+        switch (_selectedSortingOption) {
+          case SortingOption.priceAscending:
+            return product1.price.compareTo(product2.price);
+          case SortingOption.priceDescending:
+            return product2.price.compareTo(product1.price);
+          case SortingOption.alphaAcscending:
+            return product1.title.compareTo(product2.title);
+          case SortingOption.alphaDescending:
+            return product2.title.compareTo(product1.title);
+          case null:
+            return 0;
+        }
+      });
     });
   }
 
@@ -79,11 +100,15 @@ class _CollectionPageState extends State<CollectionPage> {
                       const DropdownMenuEntry(
                           value: null, label: "All products")
                     ]),
-                DropdownMenu(dropdownMenuEntries: [
-                  for (SortingOption sortingOption in SortingOption.values)
-                    DropdownMenuEntry(
-                        value: sortingOption, label: sortingOption.displayName)
-                ]),
+                DropdownMenu(
+                    label: const Text("Sort by"),
+                    onSelected: _onSortChanged,
+                    dropdownMenuEntries: [
+                      for (SortingOption sortingOption in SortingOption.values)
+                        DropdownMenuEntry(
+                            value: sortingOption,
+                            label: sortingOption.displayName)
+                    ]),
               ],
             ),
             Center(
