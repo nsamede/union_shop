@@ -36,6 +36,24 @@ class UnionShopApp extends StatelessWidget {
         '/about': (context) => const AboutPage(),
         '/collections': (context) => const CollectionsPage(),
         '/collection': (context) => const CollectionPage(),
+        '/sale': (context) => CollectionPage(
+              title: "SALE",
+              description:
+                  "Don't miss out! Get yours before they're all gone!. All prices shown are inclusive of the discount.",
+              products: List<Product>.generate(10, (index) {
+                final types = <ProductType>[];
+                if (index % 2 == 0) types.add(ProductType.merchandise);
+                if (index % 3 == 0) types.add(ProductType.clothing);
+                if (index % 5 == 0) types.add(ProductType.popular);
+                return Product(
+                  title: 'Product ${index + 1}',
+                  price: 20.0 + index,
+                  salePrice: 15.0 + index,
+                  imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                  productTypes: types,
+                );
+              }),
+            ),
       },
     );
   }

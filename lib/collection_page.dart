@@ -19,7 +19,10 @@ enum SortingOption {
 
 class CollectionPage extends StatefulWidget {
   final List<Product>? products;
-  const CollectionPage({super.key, this.products});
+  final String? title;
+  final String? description;
+  const CollectionPage(
+      {super.key, this.products, this.title, this.description});
 
   @override
   State<CollectionPage> createState() => _CollectionPageState();
@@ -164,14 +167,15 @@ class _CollectionPageState extends State<CollectionPage> {
                       children: [
                         Container(
                           margin: const EdgeInsets.symmetric(vertical: 20),
-                          child: const Text(
-                            "Example Collection",
+                          child: Text(
+                            widget.title ?? "Example Collection",
                             style: heading1,
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        const Text(
-                            "This is a description for the example collection.",
+                        Text(
+                            widget.description ??
+                                "This is a description for the example collection.",
                             style: bodyText,
                             textAlign: TextAlign.center),
                       ],
