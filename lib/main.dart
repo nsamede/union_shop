@@ -6,6 +6,7 @@ import 'package:union_shop/collections_page.dart';
 import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
 import 'package:union_shop/models/product.dart';
+import 'package:union_shop/navigation_functions.dart';
 import 'package:union_shop/product_card.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/app_styles.dart';
@@ -64,10 +65,6 @@ class UnionShopApp extends StatelessWidget {
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  void placeholderCallbackForButtons() {
-    // This is the event handler for buttons that don't work yet
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,17 +109,18 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Text(
-                          'Placeholder Hero Title',
+                          'Essential Range - Over 20% OFF!',
                           style: TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             height: 1.2,
                           ),
+                          textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 16),
                         const Text(
-                          "This is placeholder text for the hero section.",
+                          "Over 20% off our Essential Range. Come and grab yours while stock lasts!",
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -132,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 32),
                         ElevatedButton(
-                          onPressed: placeholderCallbackForButtons,
+                          onPressed: () => navigateToSale(context),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF4d2963),
                             foregroundColor: Colors.white,
