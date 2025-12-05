@@ -13,46 +13,55 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const ListTile(
+          GestureDetector(
+            onTap: () => navigateToHome(context),
+            child: const ListTile(
+                title: Text(
+              "Home",
+            )),
+          ),
+          GestureDetector(
+            onTap: () => navigateToCollection(context),
+            child: const ExpansionTile(
               title: Text(
-            "Home",
-          )),
-          const ExpansionTile(
-            title: Text(
-              "Shop",
+                "Shop",
+              ),
+              children: [
+                Text(
+                  "Clothing",
+                ),
+                Text(
+                  "Merchandise",
+                ),
+                Text(
+                  "Halloween 🎃",
+                ),
+                Text(
+                  "Signature & Essential Range",
+                ),
+                Text(
+                  "Portsmouth City Collection",
+                ),
+                Text(
+                  "Pride Collection 🏳️‍🌈",
+                ),
+                Text(
+                  "Graduation 🎓",
+                )
+              ],
             ),
-            children: [
-              Text(
-                "Clothing",
-              ),
-              Text(
-                "Merchandise",
-              ),
-              Text(
-                "Halloween 🎃",
-              ),
-              Text(
-                "Signature & Essential Range",
-              ),
-              Text(
-                "Portsmouth City Collection",
-              ),
-              Text(
-                "Pride Collection 🏳️‍🌈",
-              ),
-              Text(
-                "Graduation 🎓",
-              )
-            ],
           ),
           const ListTile(
               title: Text(
             "The Print Shack",
           )),
-          const ListTile(
-              title: Text(
-            "SALE!",
-          )),
+          GestureDetector(
+            onTap: () => navigateToSale(context),
+            child: const ListTile(
+                title: Text(
+              "SALE!",
+            )),
+          ),
           GestureDetector(
             child: const ListTile(
               title: Text(
