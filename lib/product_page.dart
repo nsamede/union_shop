@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:union_shop/app_drawer.dart';
 import 'package:union_shop/app_styles.dart';
 import 'package:union_shop/header.dart';
@@ -73,11 +74,11 @@ class ProductPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 40),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 40),
                     child: Column(
                       children: [
-                        DropdownMenu<String>(
+                        const DropdownMenu<String>(
                           label: Text("Colour"),
                           initialSelection: "Black",
                           expandedInsets: EdgeInsets.zero,
@@ -90,8 +91,8 @@ class ProductPage extends StatelessWidget {
                                 value: "Bottle Green", label: "Bottle Green"),
                           ],
                         ),
-                        SizedBox(height: 20),
-                        Row(
+                        const SizedBox(height: 20),
+                        const Row(
                           children: [
                             Expanded(
                               child: DropdownMenu<String>(
@@ -124,6 +125,71 @@ class ProductPage extends StatelessWidget {
                             )
                           ],
                         ),
+                        const SizedBox(height: 20),
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              height: 45,
+                              child: OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                      shape: const ContinuousRectangleBorder(),
+                                      foregroundColor: const Color(0xff4d2963)),
+                                  onPressed: () {},
+                                  child: const Text(
+                                    "ADD TO CART",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 2),
+                                  )),
+                            ),
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 45,
+                              child: TextButton(
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: const Color(0xff5433EB),
+                                      foregroundColor: Colors.white,
+                                      shape: const ContinuousRectangleBorder()),
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        "Buy with",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            letterSpacing: 1.3),
+                                      ),
+                                      const SizedBox(width: 3),
+                                      SvgPicture.asset(
+                                        "images/shopLogo.svg",
+                                        height: 20,
+                                      )
+                                    ],
+                                  )),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              "More payment options",
+                              style: TextStyle(
+                                  color: Colors.grey[700],
+                                  fontSize: 14,
+                                  decoration: TextDecoration.underline),
+                            ),
+                            const SizedBox(height: 30),
+                            const Text(
+                              "Bringing to you, our best selling Classic Sweatshirt. Available in 4 different colours.",
+                              style: bodyText,
+                            ),
+                            const SizedBox(height: 30),
+                            const Text(
+                              "Soft, comfortable, 50% cotton and 50% polyester.",
+                              style: bodyText,
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
