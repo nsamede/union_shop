@@ -5,6 +5,7 @@ import 'package:union_shop/app_styles.dart';
 import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
 import 'package:union_shop/models/product.dart';
+import 'package:union_shop/navigation_functions.dart';
 import 'package:union_shop/top_banner.dart';
 
 class ProductPage extends StatelessWidget {
@@ -190,7 +191,31 @@ class ProductPage extends StatelessWidget {
                               style: bodyText,
                             ),
                           ],
-                        )
+                        ),
+                        const SizedBox(height: 40),
+                        SizedBox(
+                          height: 40,
+                          width: 250,
+                          child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                  shape: const ContinuousRectangleBorder(),
+                                  foregroundColor: const Color(0xff4d2963)),
+                              onPressed: () => navigateToCollection(context),
+                              child: const Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Icon(Icons.arrow_back),
+                                  Text(
+                                    "BACK TO COLLECTION",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 2,
+                                        fontSize: 14),
+                                  ),
+                                ],
+                              )),
+                        ),
                       ],
                     ),
                   ),
