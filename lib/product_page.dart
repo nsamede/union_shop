@@ -8,7 +8,7 @@ import 'package:union_shop/top_banner.dart';
 
 class ProductPage extends StatelessWidget {
   final Product product = Product(
-      title: "Example Product",
+      title: "Classic Sweatshirts",
       price: 23.00,
       imageUrl: 'images/greenSweatshirtFinal_900x.png',
       productTypes: []);
