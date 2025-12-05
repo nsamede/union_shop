@@ -39,10 +39,30 @@ class ProductCard extends StatelessWidget {
                 maxLines: 2,
               ),
               const SizedBox(height: 4),
-              Text(
-                "£${product.price}",
-                style: const TextStyle(fontSize: 13, color: Colors.grey),
-              ),
+              if (product.salePrice != null)
+                Row(children: [
+                  Text(
+                    "£${product.salePrice}",
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    "£${product.price}",
+                    style: const TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey,
+                        decoration: TextDecoration.lineThrough),
+                  ),
+                ])
+              else ...[
+                Text(
+                  "£${product.price}",
+                  style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                ),
+              ]
             ],
           ),
         ],

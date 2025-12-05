@@ -30,9 +30,14 @@ class _CollectionPageState extends State<CollectionPage> {
     if (index % 2 == 0) types.add(ProductType.merchandise);
     if (index % 3 == 0) types.add(ProductType.clothing);
     if (index % 5 == 0) types.add(ProductType.popular);
+    double? salePrice;
+    if (index % 4 == 0) {
+      salePrice = 8.0 + index;
+    }
     return Product(
         title: 'Product $index',
         price: 10.0 + index,
+        salePrice: salePrice,
         imageUrl: 'images/portsmouthCityMagnet1.jpg',
         productTypes: types);
   });

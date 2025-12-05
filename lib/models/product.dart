@@ -10,6 +10,7 @@ enum ProductType {
 class Product {
   final String title;
   final double price;
+  final double? salePrice;
   final String imageUrl;
   final List<ProductType> productTypes;
 
@@ -17,5 +18,6 @@ class Product {
       {required this.title,
       required this.price,
       required this.imageUrl,
-      required this.productTypes});
+      required this.productTypes,
+      this.salePrice});
 }
