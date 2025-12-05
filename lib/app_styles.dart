@@ -9,6 +9,6 @@ const TextStyle heading2 =
     TextStyle(fontSize: 20, color: Colors.black, letterSpacing: 1);
 
 const TextStyle bodyText =
-    TextStyle(fontSize: 15, color: Colors.black54, letterSpacing: 1);
+    TextStyle(fontSize: 15, color: Colors.black87, letterSpacing: 1);
 const TextStyle bodyTextUnderlined = TextStyle(
     fontSize: 15, color: Colors.black, decoration: TextDecoration.underline);
