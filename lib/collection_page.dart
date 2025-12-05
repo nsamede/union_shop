@@ -48,34 +48,44 @@ class _CollectionPageState extends State<CollectionPage> {
   void _onFilterChanged(ProductType? selectedType) {
     setState(() {
       _selectedProductType = selectedType;
-      if (_selectedProductType == null) {
-        _displayedProducts = _products;
-      } else {
-        _displayedProducts = _products
-            .where((product) =>
-                product.productTypes.contains(_selectedProductType))
-            .toList();
-      }
+      _applySorting();
+      _applyFilter();
     });
+  }
+
+  void _applyFilter() {
+    if (_selectedProductType == null) {
+      _displayedProducts = _products;
+    } else {
+      _displayedProducts = _products
+          .where(
+              (product) => product.productTypes.contains(_selectedProductType))
+          .toList();
+    }
   }
 
   void _onSortChanged(SortingOption? selectedSort) {
     setState(() {
       _selectedSortingOption = selectedSort;
-      _displayedProducts.sort((product1, product2) {
-        switch (_selectedSortingOption) {
-          case SortingOption.priceAscending:
-            return product1.price.compareTo(product2.price);
-          case SortingOption.priceDescending:
-            return product2.price.compareTo(product1.price);
-          case SortingOption.alphaAcscending:
-            return product1.title.compareTo(product2.title);
-          case SortingOption.alphaDescending:
-            return product2.title.compareTo(product1.title);
-          case null:
-            return 0;
-        }
-      });
+      _applySorting();
+      _applyFilter();
+    });
+  }
+
+  void _applySorting() {
+    _displayedProducts.sort((product1, product2) {
+      switch (_selectedSortingOption) {
+        case SortingOption.priceAscending:
+          return product1.price.compareTo(product2.price);
+        case SortingOption.priceDescending:
+          return product2.price.compareTo(product1.price);
+        case SortingOption.alphaAcscending:
+          return product1.title.compareTo(product2.title);
+        case SortingOption.alphaDescending:
+          return product2.title.compareTo(product1.title);
+        case null:
+          return 0;
+      }
     });
   }
 
