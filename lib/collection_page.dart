@@ -98,66 +98,83 @@ class _CollectionPageState extends State<CollectionPage> {
           children: [
             const TopBanner(),
             const Header(),
-            Row(
-              children: [
-                DropdownMenu<ProductType?>(
-                    label: const Text("Filter by"),
-                    onSelected: _onFilterChanged,
-                    dropdownMenuEntries: [
-                      for (ProductType productType in ProductType.values)
-                        DropdownMenuEntry(
-                            value: productType, label: productType.displayName),
-                      const DropdownMenuEntry(
-                          value: null, label: "All products")
-                    ]),
-                DropdownMenu(
-                    label: const Text("Sort by"),
-                    onSelected: _onSortChanged,
-                    dropdownMenuEntries: [
-                      for (SortingOption sortingOption in SortingOption.values)
-                        DropdownMenuEntry(
-                            value: sortingOption,
-                            label: sortingOption.displayName)
-                    ]),
-              ],
-            ),
-            Center(
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Column(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 20),
-                    child: const Text(
-                      "Example Collection",
-                      style: heading1,
-                      textAlign: TextAlign.center,
+                  Center(
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 20),
+                          child: const Text(
+                            "Example Collection",
+                            style: heading1,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const Text(
-                    "This is a subheading for an example collection, describing what the collection is.",
-                    style: TextStyle(
-                        color: Colors.black54, letterSpacing: 1, fontSize: 15),
-                    textAlign: TextAlign.center,
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    children: [
+                      DropdownMenu<ProductType?>(
+                          label: const Text("Filter by"),
+                          onSelected: _onFilterChanged,
+                          dropdownMenuEntries: [
+                            for (ProductType productType in ProductType.values)
+                              DropdownMenuEntry(
+                                  value: productType,
+                                  label: productType.displayName),
+                            const DropdownMenuEntry(
+                                value: null, label: "All products")
+                          ]),
+                      DropdownMenu(
+                          label: const Text("Sort by"),
+                          onSelected: _onSortChanged,
+                          dropdownMenuEntries: [
+                            for (SortingOption sortingOption
+                                in SortingOption.values)
+                              DropdownMenuEntry(
+                                  value: sortingOption,
+                                  label: sortingOption.displayName)
+                          ]),
+                    ],
+                  ),
+                  const Divider(),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 30),
+                      child: Text(
+                        "${_displayedProducts.length} products",
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[600],
+                            fontStyle: FontStyle.italic,
+                            letterSpacing: 1),
+                      ),
+                    ),
+                  ),
+                  GridView.count(
+                    crossAxisCount: 2,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisSpacing: 24,
+                    mainAxisSpacing: 48,
+                    shrinkWrap: true,
+                    children: [
+                      for (var product in _displayedProducts)
+                        ProductCard(
+                          product: product,
+                        )
+                    ],
                   )
                 ],
               ),
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            GridView.count(
-              crossAxisCount: 2,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisSpacing: 24,
-              mainAxisSpacing: 48,
-              shrinkWrap: true,
-              children: [
-                for (var product in _displayedProducts)
-                  Expanded(
-                      child: ProductCard(
-                    product: product,
-                  ))
-              ],
-            )
           ],
         ),
       ),
