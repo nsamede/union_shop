@@ -26,8 +26,28 @@ class _CollectionPageState extends State<CollectionPage> {
         productTypes: types);
   });
   List<Product> _displayedProducts = [];
+  ProductType? _selectedProductType = null;
 
   @override
+  void initState() {
+    super.initState();
+    _displayedProducts = _products;
+  }
+
+  void _onFilterChanged(ProductType? selectedType) {
+    setState(() {
+      _selectedProductType = selectedType;
+      if (_selectedProductType == null) {
+        _displayedProducts = _products;
+      } else {
+        _displayedProducts = _products
+            .where((product) =>
+                product.productTypes.contains(_selectedProductType))
+            .toList();
+      }
+    });
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const AppDrawer(),
@@ -36,6 +56,15 @@ class _CollectionPageState extends State<CollectionPage> {
           children: [
             const TopBanner(),
             const Header(),
+            DropdownMenu<ProductType?>(
+                label: const Text("Filter by"),
+                onSelected: _onFilterChanged,
+                dropdownMenuEntries: [
+                  for (ProductType productType in ProductType.values)
+                    DropdownMenuEntry(
+                        value: productType, label: productType.toString()),
+                  const DropdownMenuEntry(value: null, label: "All products")
+                ]),
             Center(
               child: Column(
                 children: [
@@ -66,7 +95,7 @@ class _CollectionPageState extends State<CollectionPage> {
               mainAxisSpacing: 48,
               shrinkWrap: true,
               children: [
-                for (var product in _products)
+                for (var product in _displayedProducts)
                   Expanded(
                       child: ProductCard(
                     product: product,
