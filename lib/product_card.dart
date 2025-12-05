@@ -40,7 +40,7 @@ class ProductCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                product.price as String,
+                "£${product.price}",
                 style: const TextStyle(fontSize: 13, color: Colors.grey),
               ),
             ],

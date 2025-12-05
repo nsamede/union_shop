@@ -5,7 +5,7 @@ import 'package:union_shop/collection_page.dart';
 import 'package:union_shop/collections_page.dart';
 import 'package:union_shop/footer.dart';
 import 'package:union_shop/header.dart';
-import 'package:union_shop/navigation_functions.dart';
+import 'package:union_shop/models/product.dart';
 import 'package:union_shop/product_card.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/app_styles.dart';
@@ -148,27 +148,36 @@ class HomeScreen extends StatelessWidget {
                           MediaQuery.of(context).size.width > 600 ? 2 : 1,
                       crossAxisSpacing: 24,
                       mainAxisSpacing: 48,
-                      children: const [
+                      children: [
                         ProductCard(
-                          title: 'Placeholder Product 1',
-                          price: '£10.00',
-                          imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                          product: Product(
+                              title: 'Placeholder Product 1',
+                              price: 10.0,
+                              imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                              productTypes: []),
                         ),
                         ProductCard(
-                          title: 'Placeholder Product 2',
-                          price: '£15.00',
-                          imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                          product: Product(
+                              title: 'Placeholder Product 2',
+                              price: 15.00,
+                              imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                              productTypes: []),
                         ),
                         ProductCard(
-                          title: 'Placeholder Product 3',
-                          price: '£20.00',
-                          imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                          product: Product(
+                              title: 'Placeholder Product 3',
+                              price: 20.00,
+                              imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                              productTypes: []),
                         ),
                         ProductCard(
-                          title: 'Placeholder Product 4',
-                          price: '£25.00',
-                          imageUrl: 'images/portsmouthCityMagnet1.jpg',
-                        ),
+                          product: Product(
+                            title: 'Placeholder Product 4',
+                            price: 25.00,
+                            imageUrl: 'images/portsmouthCityMagnet1.jpg',
+                            productTypes: [],
+                          ),
+                        )
                       ],
                     ),
                   ],
