@@ -19,3 +19,7 @@ void navigateToCollection(BuildContext context) {
 void navigateToSale(BuildContext context) {
   Navigator.pushNamed(context, "/sale");
 }
+
+void navigateToSignIn(BuildContext context) {
+  Navigator.pushNamed(context, "/signin");
+}

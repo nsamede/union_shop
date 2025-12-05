@@ -64,7 +64,7 @@ class Header extends StatelessWidget {
                       minWidth: 32,
                       minHeight: 32,
                     ),
-                    onPressed: () {},
+                    onPressed: () => navigateToSignIn(context),
                   ),
                   IconButton(
                     icon: const Icon(
